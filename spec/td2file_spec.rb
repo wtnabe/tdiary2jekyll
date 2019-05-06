@@ -18,4 +18,24 @@ describe TD2File do
       assert { subject == '12' }
     }
   end
+
+  describe '#entries' do
+    subject { td2.entries }
+
+    describe 'is array' do
+      it {
+        assert {
+          subject.size == 4
+        }
+      }
+    end
+
+    describe 'not TDIARY2.00.00' do
+      it {
+        assert {
+          subject.all? {|e| e.strip != 'TDIARY2.00.00' }
+        }
+      }
+    end
+  end
 end

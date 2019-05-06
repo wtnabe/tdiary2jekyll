@@ -39,4 +39,14 @@ class TD2File
 
     @month
   end
+
+  #
+  # [return] Array
+  #
+  def entries
+    raw_data = File.read(path)
+    wedged   = raw_data.gsub(/^((?:TDIARY2\.00\.00|\.)\n)(Date:)/m, '\1' + "\v" + '\2')
+
+    wedged.split(/\v/)[1..-1]
+  end
 end

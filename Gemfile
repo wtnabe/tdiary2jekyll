@@ -3,6 +3,7 @@
 source 'https://rubygems.org'
 
 gem 'rake'
+gem 'kramdown'
 
 group :development do
   gem 'minitest'

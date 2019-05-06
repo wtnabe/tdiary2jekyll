@@ -11,15 +11,21 @@ describe MetadataConverter do
   }
 
   describe '.convert' do
+    it 'get Metadata instances' do
+      assert {
+        MetadataConverter.convert(entry).class == Metadata
+      }
+    end
+
     it 'all keys small case' do
       assert {
-        keys = MetadataConverter.convert(entry).metadata.keys
+        keys = MetadataConverter.convert(entry).frontmatter.keys
         keys == keys.map {|k| k.downcase}
       }
     end
 
     describe 'date with timezone' do
-      subject { MetadataConverter.convert(entry).metadata['date'] }
+      subject { MetadataConverter.convert(entry).frontmatter['date'] }
 
       it 'include 2002-12-29' do
         assert {

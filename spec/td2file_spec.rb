@@ -1,13 +1,13 @@
 require 'spec_helper'
 
 describe TD2File do
-  let(:td2) { TD2File.new(File.dirname(__FILE__) + '/support/2012/201212.td2') }
+  let(:td2) { TD2File.new(File.dirname(__FILE__) + '/support/2002/200212.td2') }
 
   describe '#year' do
     subject   { td2.year }
 
     it {
-      assert { subject == '2012' }
+      assert { subject == '2002' }
     }
   end
 

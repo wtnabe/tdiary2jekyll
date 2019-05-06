@@ -11,7 +11,7 @@ describe TD2Files do
 
     it {
       assert {
-        subject == ['201212.td2', '201801.td2']
+        subject == ['200212.td2', '201801.td2']
       }
     }
   end

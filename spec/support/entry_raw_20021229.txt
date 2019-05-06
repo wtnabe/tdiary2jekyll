@@ -1,0 +1,15 @@
+Date: 20021229
+Title: 
+Last-Modified: 1119142582
+Visible: true
+Format: Wiki
+
+! [Web][MS][Tool]OpenSA 入れてみた
+
+入ってる PHP は当然 multibyte 拡張版じゃないのですが、  \OpenSA\Apache\modules\php4ts.dll を multibyte 拡張版と差し替えてやったらうまくいきました。付属の php_mbstring.dll を有効にしても multibyte 拡張版独自の関数は使えないのでダメです。（逆に有効にしておくと php4ts.dll ですでに mbstring が有効になっているので、いろんな関数なんかが二重定義になって Apache 起動時にしこたま叱られます。叱られるだけで動くのは動くのですが、気持ちよくないんでオススメしません。）
+
+一応 OpenSA 1.0.4 に付属している PHP 4.2.2 に合わせて 4.2.2 の multibyte 拡張にしときました。ひょっとすると php4ts.dll を 4.2.3 にして、extensions も全部 4.2.3 のやつに入れ替えたらそれはそれでちゃんと動きそうな気もしますが（問題は Apache の mod_php4.so と適合するかどうかだけだろうし）、やってみてないです。
+
+人柱志望者に期待。まーこれでコンパイラなしでも https と PHP の使える Apache が起こせるってことで、感謝感謝。
+
+.

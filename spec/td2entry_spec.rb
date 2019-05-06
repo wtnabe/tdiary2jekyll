@@ -31,4 +31,12 @@ describe TD2Entry do
       }
     }
   end
+
+  describe '#date' do
+    it {
+      assert {
+        TD2Entry.new(raw).date.class == Date
+      }
+    }
+  end
 end

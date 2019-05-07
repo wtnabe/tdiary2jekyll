@@ -37,10 +37,18 @@ class TD2Entry
 
     if metadata && body
       parse_metadata(metadata)
-      @body = body
+      @body = chop_terminator(body)
     else
       raise CannotParseEntry.new(raw)
     end
+  end
+
+  #
+  # [param]  String body
+  # [return] String
+  #
+  def chop_terminator(body)
+    body.sub(/\n\.\n\z/m, '')
   end
 
   #

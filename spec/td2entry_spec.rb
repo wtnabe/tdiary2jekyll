@@ -34,6 +34,24 @@ describe TD2Entry do
     }
   end
 
+  describe '#chop_terminator' do
+    describe 'include \n.\n' do
+      it {
+        assert {
+          TD2Entry.new(raw).chop_terminator("1234\n.\n") == '1234'
+        }
+      }
+    end
+
+    describe 'not include \n.\n' do
+      it {
+        assert {
+          TD2Entry.new(raw).chop_terminator('1234') == '1234'
+        }
+      }
+    end
+  end
+
   describe '#date' do
     it {
       assert {

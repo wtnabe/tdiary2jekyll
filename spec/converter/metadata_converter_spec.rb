@@ -4,7 +4,7 @@ describe MetadataConverter do
   let(:entry) {
     entry = NKF.nkf('-w',
                 File.read(
-                     File.dirname(__FILE__) + '/../support/entry_raw_20021229.txt',
+                     File.dirname(__FILE__) + '/../support/entry_wiki_20021229.txt',
                      encoding: 'ascii-8bit'))
 
     TD2Entry.new(entry)

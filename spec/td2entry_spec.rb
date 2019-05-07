@@ -1,7 +1,9 @@
 require 'spec_helper'
 
+require_relative './support/dummy_data'
+
 describe TD2Entry do
-  let(:raw) { File.read(File.dirname(__FILE__) + '/support/entry_wiki_20021229.txt') }
+  let(:raw) { DummyData.wiki_format_entry }
 
   describe 'cannot parse' do
     it {

@@ -1,0 +1,41 @@
+Date: 20040622
+Title: 
+Last-Modified: 1094693455
+Visible: true
+Format: tDiary
+
+[Apple][Tool] さらっと書きすぎ > AirMac Express
+from <a href="http://store.apple.com/0120-APPLE-1/WebObjects/japanstore.woa/80601/wo/Cp5kpLgGPGUv2HTihpD2ZUNLGAQ/1.3.0.5.10.3.0.1.13.0">AppleStore Japan</a>
+<blockquote>
+<p>
+AirMac 4.0ソフトウェアを使用してのベースステーションを管理、ワイヤレスインターネット接続、AirTunesを使用しての音楽再生には以下の条件が必要です。
+</p>
+<ul>
+<li>Mac OS X v10.3以降</li>
+<li>AirMacまたはAirMac Extreme対応コンピュータ</li>
+<li>Windows XPまたはWindows 2000</li>
+<li>WiFiに準拠した802.11bまたは802.11g対応Windowsコンピュータ</li>
+</ul> 
+</blockquote>
+<p>
+ということで、「Windows <strong>だけ</strong>で完全に利用できる」ことが確定。逆に Jagaur 以下では設定不能ということも判明。
+</p>
+<p>
+このエントリのために今日は tDiary スタイルで書く。tDiary の Wiki スタイルで表現力が足りないってー事態がやはり出てきてしまった。上の blockquote の中の ul を Wiki スタイルでは書けない。
+</p>
+
+[Biz][Net] <a href="http://japan.cnet.com/news/media/story/0,2000047715,20069336,00.htm">Yahoo IM 企業向け開発終了</a>
+<p>
+なるほどねぇ。確かに IBM 製の企業向け IM があるなら使ってみたい気はするなぁ。
+</p>
+<p>
+何より知りたいことは IM を遮断する方法だったりするんだけど、とりあえずほんの少しでも有名な Messenger にミソがついただけで嬉しいよ :-)
+</p>
+
+[Tool][Web] Miech → Sage 実験
+Miech がやっぱ予想通り使いやすくないというか、IE コンポーネント系にありがちなゴテゴテ感がどうにも好きになれないので Mozilla の Extension で Sage を試すことに。まぁ Sage には blog クライアントの機能はなく、blogger 系に対応した mozBlog は Firefox には対応していないので Miech と同じ環境にはならないんだけど、なんか別にいいや、そんなの、って感じ。
+
+[Biz][Web] <a href="http://www.itmedia.co.jp/mobile/articles/0406/21/news005.html">モジラ、息を吹き返す——ノキアから開発資金を獲得</a>
+<p>
+まぁほんとに吹き返しているかどうかは別として。一応画像を含めたズーミングの機能は現状でもなんとか実現はできるわな。個人的には CSS Mobile Profile のテストとかがしやすくなると嬉しいような気がする。携帯用のブラウザはデキの悪いものが大量に出回っている（うえにまともな開発環境が揃ってなくて金と時間をやたらと掛けて実機テストするしかなかったりする）ので、Mozilla, Opera のような完全な Web ブラウザ出身のものが 3G の時代を席巻するようになってほしいものだ。
+</p>

@@ -17,9 +17,9 @@ describe TDiaryFormatParser do
     describe 'return TDiarySection instances' do
       it {
         assert {
-          TDiaryFormatParser.split_to_sections(TD2Entry.new(entry).body).map {|s|
-            s.class
-          } == [TDiarySection, TDiarySection, TDiarySection, TDiarySection]
+          TDiaryFormatParser.split_to_sections(TD2Entry.new(entry).body).all? {|s|
+            s.title.chomp.size > 0 && s.body.chomp.size > 0
+          }
         }
       }
     end

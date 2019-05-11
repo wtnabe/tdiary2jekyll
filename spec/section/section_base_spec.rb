@@ -17,6 +17,14 @@ describe SectionBase do
     end
   end
 
+  describe 'title' do
+    describe 'not include newline' do
+      it {
+        assert { !section.title.include?("\n") }
+      }
+    end
+  end
+
   describe 'body' do
     describe 'start with not blank line' do
       it {

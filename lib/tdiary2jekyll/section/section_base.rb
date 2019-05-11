@@ -16,7 +16,15 @@ class SectionBase
   def split(section)
     lines = section.lines
 
-    @title = lines.first
+    @title = parse_title(lines.first)
     @body  = lines[1..-1].join.lstrip
+  end
+
+  #
+  # [param]  String title
+  # [return] String
+  #
+  def parse_title(title)
+    title.strip
   end
 end

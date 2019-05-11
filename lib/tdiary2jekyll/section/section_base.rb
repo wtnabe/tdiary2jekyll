@@ -17,6 +17,6 @@ class SectionBase
     lines = section.lines
 
     @title = lines.first
-    @body  = lines[1..-1].join
+    @body  = lines[1..-1].join.lstrip
   end
 end

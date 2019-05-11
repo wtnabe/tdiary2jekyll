@@ -16,4 +16,18 @@ describe SectionBase do
       end
     end
   end
+
+  describe 'body' do
+    describe 'start with not blank line' do
+      it {
+        assert { section.body.lines.first != "\n" }
+      }
+    end
+
+    describe 'must have newline terminator' do
+      it {
+        assert { section.body =~ /(.*)\n\z/m }
+      }
+    end
+  end
 end

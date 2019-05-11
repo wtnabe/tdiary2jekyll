@@ -1,15 +1,26 @@
+# -*- coding: utf-8 -*-
 class SectionBase
   #
   # [param] String section
+  # [param] Metadata metadata
   #
-  def initialize(section = nil)
-    @title      = nil
-    @body       = nil
-    @categories = []
+  def initialize(section = nil, metadata = nil)
+    @format      = nil
+    @frontmatter = nil
+    @title       = nil
+    @body        = nil
+    @categories  = []
 
     split(section) if section
+    self.metadata = metadata if metadata
   end
-  attr_reader :title, :body, :categories
+  attr_reader :title, :body, :categories, :frontmatter, :format
+
+  #
+  # [param] Metadata metadata
+  #
+  def metadata=(metadata)
+  end
 
   #
   # [param] String section

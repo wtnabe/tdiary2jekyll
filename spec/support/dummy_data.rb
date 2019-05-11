@@ -10,6 +10,10 @@ module DummyData
     File.read(File.dirname(__FILE__) + '/entry_tdiary_20040622.txt')
   end
 
-  module_function :wiki_format_entry, :tdiary_format_entry
+  def one_wiki_section
+    File.read(File.dirname(__FILE__) + '/one_wiki_section.txt')
+  end
+
+  module_function :wiki_format_entry, :tdiary_format_entry, :one_wiki_section
 end
 

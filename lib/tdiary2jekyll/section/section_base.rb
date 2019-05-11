@@ -17,9 +17,17 @@ class SectionBase
   attr_reader :title, :body, :categories, :frontmatter, :format
 
   #
+  # insert Entry Metadata, but title is ignored ( overwritten by section title )
+  #
   # [param] Metadata metadata
   #
   def metadata=(metadata)
+    frontmatter = metadata.frontmatter
+    frontmatter.merge!('title' => title) if !title.nil?
+    frontmatter.merge!('categories' => categories)
+
+    @frontmatter = frontmatter
+    @format      = metadata.format
   end
 
   #

@@ -75,4 +75,33 @@ describe SectionBase do
       }
     end
   end
+
+  describe '#metadata=' do
+    describe 'set after initialize' do
+      before {
+        @section = WikiSection.new(DummyData.one_wiki_section)
+        @section.metadata = Metadata.new(format: 'wiki', frontmatter: {'title' => ''})
+      }
+
+      it {
+        assert {
+          @section.frontmatter == {'title' => 'title', 'categories' => ['cat1', 'cat2']}
+        }
+      }
+    end
+
+    describe 'set when initialize' do
+      before {
+        @section = WikiSection.new(
+                               DummyData.one_wiki_section,
+                               Metadata.new(format: 'wiki', frontmatter: {'title' => ''}))
+      }
+
+      it {
+        assert {
+          @section.frontmatter == {'title' => 'title', 'categories' => ['cat1', 'cat2']}
+        }
+      }
+    end
+  end
 end

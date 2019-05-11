@@ -1,4 +1,4 @@
-! [cat1][cat2]
+! [cat1][cat2] title
 
 body line 1
 body line 2

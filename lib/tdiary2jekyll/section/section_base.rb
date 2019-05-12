@@ -1,23 +1,23 @@
 # -*- coding: utf-8 -*-
 class SectionBase
   #
-  # [param] String section
+  # [param] String   content
   # [param] Metadata metadata
   #
-  def initialize(section = nil, metadata = nil)
+  def initialize(content = nil, metadata = nil)
     @format      = nil
     @frontmatter = nil
     @title       = nil
     @body        = nil
     @categories  = []
 
-    split(section) if section
+    split(content) if content
     self.metadata = metadata if metadata
   end
   attr_reader :title, :body, :categories, :frontmatter, :format
 
   #
-  # insert Entry Metadata, but title is ignored ( overwritten by section title )
+  # insert Entry Metadata, but title is ignored ( overwritten by content title )
   #
   # [param] Metadata metadata
   #
@@ -31,10 +31,10 @@ class SectionBase
   end
 
   #
-  # [param] String section
+  # [param] String content
   #
-  def split(section)
-    lines = section.lines
+  def split(content)
+    lines = content.lines
 
     title = parse_title(lines.first)
     split_and_store_title_and_categories(title)

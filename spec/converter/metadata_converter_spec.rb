@@ -27,15 +27,15 @@ describe MetadataConverter do
     describe 'date with timezone' do
       subject { MetadataConverter.convert(entry).frontmatter['date'] }
 
-      it 'include 2002-12-29' do
-        assert {
-          subject.include?('2002-12-29')
+      describe 'include 2002-12-29' do
+        it {
+          assert { %w(year month day).map {|e| subject.send(e)} == [2002, 12, 29] }
         }
       end
 
-      it 'not just date' do
-        assert {
-          subject != '2002-12-29'
+      describe 'not just date' do
+        it {
+          assert { subject.class == Time }
         }
       end
     end

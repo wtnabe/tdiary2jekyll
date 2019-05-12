@@ -16,7 +16,7 @@ class MetadataConverter
 
                          if key != 'format'
                            if key == 'date'
-                             [key, entry.date.to_time.to_s]
+                             [key, entry.date.to_time]
                            else
                              [key, v]
                            end

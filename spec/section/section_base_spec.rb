@@ -5,6 +5,20 @@ describe SectionBase do
 
   let(:section) { SectionBase.new(DummyData.one_wiki_section) }
 
+  describe '#number' do
+    describe 'no number given' do
+      it {
+        assert { section.number == nil }
+      }
+    end
+    describe '2 given' do
+      before { @section = SectionBase.new(DummyData.one_wiki_section, 2) }
+      it     {
+        assert { @section.number == 2 }
+      }
+    end
+  end
+
   describe 'basic structure' do
     describe 'splitted into title and body' do
       it 'title not empty' do
@@ -94,6 +108,7 @@ describe SectionBase do
       before {
         @section = WikiSection.new(
                                DummyData.one_wiki_section,
+                               1,
                                Metadata.new(format: 'wiki', frontmatter: {'title' => ''}))
       }
 

@@ -2,9 +2,11 @@
 class SectionBase
   #
   # [param] String   content
+  # [param] Integer  number
   # [param] Metadata metadata
   #
-  def initialize(content = nil, metadata = nil)
+  def initialize(content = nil, number = nil, metadata = nil)
+    @number      = number
     @format      = nil
     @frontmatter = nil
     @title       = nil
@@ -14,7 +16,7 @@ class SectionBase
     split(content) if content
     self.metadata = metadata if metadata
   end
-  attr_reader :title, :body, :categories, :frontmatter, :format
+  attr_reader :number, :title, :body, :categories, :frontmatter, :format
 
   #
   # insert Entry Metadata, but title is ignored ( overwritten by content title )

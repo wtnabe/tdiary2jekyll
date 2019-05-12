@@ -12,5 +12,33 @@ describe WikiSection do
       }
     end
   end
+
+  describe '#converted' do
+    it {
+      assert {
+        section.converted == <<EOD
+## heading 2-1
+
+body line 1 body line 2
+
+[text][1]
+
+## heading 2-2
+
+body line 3 body line 4
+
+
+
+[1]: http://example.com
+EOD
+      }
+    }
+  end
+
+  describe '#ext' do
+    it {
+      assert { section.ext == 'md' }
+    }
+  end
 end
 

@@ -20,6 +20,25 @@ class WikiFormatParser < ParserBase
   # [return] String
   #
   def self.convert(section_body)
-    Kramdown::Document.new(HikiDoc.to_html(section_body), input: 'html').to_kramdown
+    body = section_body.gsub(/{{'/m, '').gsub(/'}}/m, '')
+
+    Kramdown::Document.new(HikiDoc.to_html(body), input: 'html').to_kramdown
+  end
+
+  #
+  # [param]  String str
+  # [return] String
+  #
+  def self.convert_amazon_plugin(str)
+=begin
+    text
+    image
+    small_image
+    medium_image
+    large_image
+    title
+    detail
+=end
+    str.gsub(/{{isbn '([0-9a-z]+)'}}/m, '{% amazon text \1 %}')
   end
 end

@@ -1,6 +1,4 @@
 require_relative './section_base'
-require 'hikidoc'
-require 'kramdown'
 
 class WikiSection < SectionBase
   #
@@ -15,7 +13,7 @@ class WikiSection < SectionBase
   # [return] String
   #
   def converted
-    Kramdown::Document.new(HikiDoc.to_html(body), input: 'html').to_kramdown
+    WikiFormatParser.convert(body)
   end
 
   #

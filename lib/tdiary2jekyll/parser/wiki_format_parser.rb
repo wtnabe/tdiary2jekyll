@@ -24,6 +24,7 @@ class WikiFormatParser < ParserBase
   def self.convert(section_body)
     body = section_body.gsub(/{{'/m, '').gsub(/'}}/m, '')
     body = convert_amazon_plugin(body, false)
+    body = escape_liquid_tag(body)
 
     Kramdown::Document.new(HikiDoc.to_html(body), input: 'html').to_kramdown
   end
@@ -47,5 +48,13 @@ class WikiFormatParser < ParserBase
 
       "{% amazon #{type} #{$3} %}"
     }
+  end
+
+  #
+  # [param]  String str
+  # [return] String
+  #
+  def self.escape_liquid_tag(str)
+    str.gsub(/{%/m, '&#123;%').gsub(/%}/, '%&#125;')
   end
 end

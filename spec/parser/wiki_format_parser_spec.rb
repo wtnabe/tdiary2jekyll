@@ -62,4 +62,26 @@ describe WikiFormatParser do
       }
     end
   end
+
+  describe '.escape_liquid_tag' do
+    let(:asset) { '{% asset app.js %}' }
+
+    describe 'single' do
+      it {
+        assert { "&#123;% asset app.js %&#125;" == WikiFormatParser.escape_liquid_tag(asset) }
+      }
+    end
+
+    describe 'double and next line' do
+      it {
+        assert {
+          WikiFormatParser.escape_liquid_tag("#{asset} #{asset}\n\n#{asset}\n") == <<EOD
+&#123;% asset app.js %&#125; &#123;% asset app.js %&#125;
+
+&#123;% asset app.js %&#125;
+EOD
+        }
+      }
+    end
+  end
 end

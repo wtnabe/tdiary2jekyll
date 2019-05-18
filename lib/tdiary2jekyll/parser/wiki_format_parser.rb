@@ -1,5 +1,6 @@
 require 'hikidoc'
 require 'kramdown'
+require 'cgi'
 
 require_relative './base'
 
@@ -27,6 +28,21 @@ class WikiFormatParser < ParserBase
     body = escape_liquid_tag(body)
 
     Kramdown::Document.new(HikiDoc.to_html(body), input: 'html').to_kramdown
+  end
+
+  #
+  # [param]  String html
+  # [return] String
+  #
+  def self.unescape_plugin(html)
+    html.gsub!( %r!<span class="plugin">\\{\\{(.+?)\\}\\}</span>!m ) do
+      CGI.unescapeHTML($1)
+    end
+    html.gsub!( %r!<div class="plugin">\n?{{'(.+?)'}}\n?</div>!m ) do
+      CGI.unescapeHTML($1)
+    end
+
+    html
   end
 
   #

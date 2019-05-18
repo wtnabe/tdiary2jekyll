@@ -26,6 +26,45 @@ describe WikiFormatParser do
     end
   end
 
+  describe '.unescape_plugin' do
+    let(:html) {
+<<EOD
+<div class="plugin">
+{{'&lt;a
+href="http://www.amazon.co.jp/exec/obidos/ASIN/4798157198"&gt;&lt;img
+src="https://images-fe.ssl-images-amazon.com/images/I/51SVf5G3N0L._SL160_.jpg"
+alt="技術者のためのテクニカルライティング入門講座" style="border: none;" align="right"
+/&gt;&lt;/a&gt;'}}
+</div>
+EOD
+    }
+    let(:footnote) { '<span class="plugin">\{\{fn \'この1年半ほどでようやく NewRelicの恩恵に与かりまくっている。\'\}\}</span>' }
+
+    describe 'html' do
+      it {
+        assert {
+unescaped = <<EOD
+<a
+href="http://www.amazon.co.jp/exec/obidos/ASIN/4798157198"><img
+src="https://images-fe.ssl-images-amazon.com/images/I/51SVf5G3N0L._SL160_.jpg"
+alt="技術者のためのテクニカルライティング入門講座" style="border: none;" align="right"
+/></a>
+EOD
+
+          WikiFormatParser.unescape_plugin(html) == unescaped
+        }
+      }
+    end
+
+    describe 'footnote' do
+      it {
+        assert {
+          WikiFormatParser.unescape_plugin(footnote) == "fn 'この1年半ほどでようやく NewRelicの恩恵に与かりまくっている。'"
+        }
+      }
+    end
+  end
+
   describe '.convert_amazon_plugin' do
     let(:image_right) { "{{isbn_image_right 'B000FAIRPA'}}" }
     let(:image_and_alt) { "{{isbn_image_right '4756107850', 'たのしいUNIX—UNIXへの招待(坂本 文)'}}" }

@@ -30,7 +30,7 @@ describe WikiFormatParser do
     let(:html) {
 <<EOD
 <div class="plugin">
-{{'&lt;a
+\\{\\{'&lt;a
 href="http://www.amazon.co.jp/exec/obidos/ASIN/4798157198"&gt;&lt;img
 src="https://images-fe.ssl-images-amazon.com/images/I/51SVf5G3N0L._SL160_.jpg"
 alt="技術者のためのテクニカルライティング入門講座" style="border: none;" align="right"
@@ -38,17 +38,17 @@ alt="技術者のためのテクニカルライティング入門講座" style="
 </div>
 EOD
     }
-    let(:footnote) { '<span class="plugin">\{\{fn \'この1年半ほどでようやく NewRelicの恩恵に与かりまくっている。\'\}\}</span>' }
+    let(:footnote) { '<span class="plugin">\{\{fn \'この1年半ほどでようやく NewRelicの恩恵に与かりまくっている。\'}}</span>' }
 
     describe 'html' do
       it {
         assert {
 unescaped = <<EOD
-<a
+'<a
 href="http://www.amazon.co.jp/exec/obidos/ASIN/4798157198"><img
 src="https://images-fe.ssl-images-amazon.com/images/I/51SVf5G3N0L._SL160_.jpg"
 alt="技術者のためのテクニカルライティング入門講座" style="border: none;" align="right"
-/></a>
+/></a>'
 EOD
 
           WikiFormatParser.unescape_plugin(html) == unescaped

@@ -31,14 +31,20 @@ class WikiFormatParser < ParserBase
   end
 
   #
+  # copied from tDiary
+  #
+  # adjust Kramdown converted Markdown
+  #
+  # openinig bracket is escaped, and sometime inserted newline betweek html attributes
+  #
   # [param]  String html
   # [return] String
   #
   def self.unescape_plugin(html)
-    html.gsub!( %r!<span class="plugin">\\{\\{(.+?)\\}\\}</span>!m ) do
+    html.gsub!( %r!<span[\s]class="plugin">\\{\\{(.+?)}}</span>!m ) do
       CGI.unescapeHTML($1)
     end
-    html.gsub!( %r!<div class="plugin">\n?{{'(.+?)'}}\n?</div>!m ) do
+    html.gsub!( %r!<div[\s]class="plugin">\n?\\{\\{(.+?)}}\n?</div>!m ) do
       CGI.unescapeHTML($1)
     end
 

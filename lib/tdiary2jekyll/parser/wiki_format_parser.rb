@@ -23,11 +23,12 @@ class WikiFormatParser < ParserBase
   # [return] String
   #
   def self.convert(section_body)
-    body = section_body.gsub(/{{'/m, '').gsub(/'}}/m, '')
+    body = escape_liquid_tag(section_body)
     body = convert_amazon_plugin(body, false)
-    body = escape_liquid_tag(body)
+    body = Kramdown::Document.new(HikiDoc.to_html(body), input: 'html').to_kramdown
+    body = unescape_plugin(body)
 
-    Kramdown::Document.new(HikiDoc.to_html(body), input: 'html').to_kramdown
+    body
   end
 
   #
@@ -58,7 +59,9 @@ class WikiFormatParser < ParserBase
   #
   def self.convert_amazon_plugin(str, avaiable = true)
     str.gsub(/{{(isbn(_image(?:_(?:right|left))?)?) '([0-9a-zA-Z-]+)'(,[^}]+)?}}/m) {
-      return '' unless avaiable
+      unless avaiable
+        ''
+      else
 
       raise AsinParseError if !$1 || !$3
 
@@ -69,6 +72,7 @@ class WikiFormatParser < ParserBase
              end
 
       "{% amazon #{type} #{$3} %}"
+      end
     }
   end
 

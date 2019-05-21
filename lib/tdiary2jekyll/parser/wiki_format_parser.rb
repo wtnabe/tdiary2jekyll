@@ -53,6 +53,15 @@ class WikiFormatParser < ParserBase
   end
 
   #
+  # [return] Array
+  #
+  def self.plugin_converters
+    Object.const_set('PLUGIN_PICKER', /\Aconvert_(.*?)_plugin\z/)
+
+    self.methods(false).map(&:to_s).grep(PLUGIN_PICKER).map {|e| e.sub(PLUGIN_PICKER, '\1')}
+  end
+
+  #
   # [param]  String str
   # [param]  Boolean avaiable
   # [return] String

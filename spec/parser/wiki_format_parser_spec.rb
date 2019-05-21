@@ -65,6 +65,14 @@ EOD
     end
   end
 
+  describe '.plugin_converters' do
+    it {
+      assert {
+        %w(amazon) == WikiFormatParser.plugin_converters
+      }
+    }
+  end
+
   describe '.convert_amazon_plugin' do
     let(:image_right) { "{{isbn_image_right 'B000FAIRPA'}}" }
     let(:image_and_alt) { "{{isbn_image_right '4756107850', 'たのしいUNIX—UNIXへの招待(坂本 文)'}}" }

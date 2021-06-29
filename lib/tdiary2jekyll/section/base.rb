@@ -86,7 +86,7 @@ module Tdiary2jekyll
       #
       def strip_markup_from_title(title)
         doc = Nokogiri("<div>#{title}</div>")
-        doc.inner_text.strip
+        doc.inner_text.strip.gsub(/&/, '&amp;').gsub(/</, '&lt;').gsub(/>/, '&gt;')
       end
 
       #

@@ -1,17 +1,17 @@
 require 'spec_helper'
 
-require_relative './support/dummy_data'
+require_relative '../support/dummy_data'
 
-describe TD2Entry do
+describe Tdiary2jekyll::Structure::Entry do
   let(:raw) { DummyData.wiki_format_entry }
 
   describe 'cannot parse' do
     it {
       assert {
         begin
-          TD2Entry.new('')
+          Tdiary2jekyll::Structure::Entry.new('')
           false
-        rescue TD2Entry::CannotParseEntry
+        rescue Tdiary2jekyll::Structure::Entry::CannotParseEntry
           true
         end
       }
@@ -21,7 +21,7 @@ describe TD2Entry do
   describe '#raw' do
     it {
       assert {
-        TD2Entry.new(raw).raw.class == String
+        Tdiary2jekyll::Structure::Entry.new(raw).raw.class == String
       }
     }
   end
@@ -29,7 +29,7 @@ describe TD2Entry do
   describe '#metadata' do
     it {
       assert {
-        TD2Entry.new(raw).metadata.class == Hash
+        Tdiary2jekyll::Structure::Entry.new(raw).metadata.class == Hash
       }
     }
   end
@@ -38,7 +38,7 @@ describe TD2Entry do
     describe 'include \n.\n' do
       it {
         assert {
-          TD2Entry.new(raw).chop_terminator("1234\n.\n") == '1234'
+          Tdiary2jekyll::Structure::Entry.new(raw).chop_terminator("1234\n.\n") == '1234'
         }
       }
     end
@@ -46,7 +46,7 @@ describe TD2Entry do
     describe 'not include \n.\n' do
       it {
         assert {
-          TD2Entry.new(raw).chop_terminator('1234') == '1234'
+          Tdiary2jekyll::Structure::Entry.new(raw).chop_terminator('1234') == '1234'
         }
       }
     end
@@ -55,7 +55,7 @@ describe TD2Entry do
   describe '#date' do
     it {
       assert {
-        TD2Entry.new(raw).date.class == Date
+        Tdiary2jekyll::Structure::Entry.new(raw).date.class == Date
       }
     }
   end

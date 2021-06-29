@@ -10,7 +10,13 @@ end
 desc 'convert'
 task :convert do
   require_relative './lib/tdiary2jekyll'
-  App.run(File.dirname(__FILE__) + '/src', File.dirname(__FILE__) + '/dest')
+  Tdiary2jekyll::App.run(File.dirname(__FILE__) + '/src', File.dirname(__FILE__) + '/dest')
 end
+
+desc 'yard'
+task :yard do
+  sh 'yard doc lib'
+end
+task :doc => :yard
 
 task :default => :spec

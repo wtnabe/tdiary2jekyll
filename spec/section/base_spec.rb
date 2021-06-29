@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe SectionBase do
+describe Tdiary2jekyll::Section::Base do
   include DummyData
 
-  let(:section) { SectionBase.new(DummyData.one_wiki_section) }
+  let(:section) { Tdiary2jekyll::Section::Base.new(DummyData.one_wiki_section) }
 
   describe '#number' do
     describe 'no number given' do
@@ -12,7 +12,7 @@ describe SectionBase do
       }
     end
     describe '2 given' do
-      before { @section = SectionBase.new(DummyData.one_wiki_section, 2) }
+      before { @section = Tdiary2jekyll::Section::Base.new(DummyData.one_wiki_section, 2) }
       it     {
         assert { @section.number == 2 }
       }
@@ -39,11 +39,11 @@ describe SectionBase do
     end
   end
 
-  describe '#split_and_store_title_and_categories' do
-    before { @section = SectionBase.new }
+  describe '#split_and_store_title_and_categories!' do
+    before { @section = Tdiary2jekyll::Section::Base.new }
 
     describe 'no title and no categories' do
-      before { @section.split_and_store_title_and_categories('') }
+      before { @section.split_and_store_title_and_categories!('') }
 
       it 'title empty, too' do
         assert { @section.title == '' }
@@ -54,7 +54,7 @@ describe SectionBase do
     end
 
     describe 'title only' do
-      before { @section.split_and_store_title_and_categories('title') }
+      before { @section.split_and_store_title_and_categories!('title') }
 
       it 'title pass through' do
         assert { @section.title      == 'title' }
@@ -65,7 +65,7 @@ describe SectionBase do
     end
 
     describe 'title and categories' do
-      before { @section.split_and_store_title_and_categories('[cat1][cat2] title') }
+      before { @section.split_and_store_title_and_categories!('[cat1][cat2] title') }
 
       it 'title not include square brackets' do
         assert { %w([ ]).all? {|b| !@section.title.include?(b)} }
@@ -93,8 +93,8 @@ describe SectionBase do
   describe '#metadata=' do
     describe 'set after initialize' do
       before {
-        @section = WikiSection.new(DummyData.one_wiki_section)
-        @section.metadata = Metadata.new(format: 'wiki', frontmatter: {'title' => ''})
+        @section = Tdiary2jekyll::Section::Wiki.new(DummyData.one_wiki_section)
+        @section.metadata = Tdiary2jekyll::Structure::Metadata.new(format: 'wiki', frontmatter: {'title' => ''})
       }
 
       it {
@@ -106,10 +106,10 @@ describe SectionBase do
 
     describe 'set when initialize' do
       before {
-        @section = WikiSection.new(
+        @section = Tdiary2jekyll::Section::Wiki.new(
                                DummyData.one_wiki_section,
                                1,
-                               Metadata.new(format: 'wiki', frontmatter: {'title' => ''}))
+                               Tdiary2jekyll::Structure::Metadata.new(format: 'wiki', frontmatter: {'title' => ''}))
       }
 
       it {

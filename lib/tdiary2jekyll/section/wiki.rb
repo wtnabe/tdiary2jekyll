@@ -8,8 +8,8 @@ module Tdiary2jekyll
       #
       # strip title level heading markup from wiki-style
       #
-      # [param]  String line
-      # [return] String
+      # @param line [String]
+      # @return [String]
       #
       # :reek:UtilityFunction
       def prepare_first_line(line)
@@ -17,8 +17,8 @@ module Tdiary2jekyll
       end
 
       #
-      # [param]  String title
-      # [return] String
+      # @param title [String]
+      # @return [Array]
       #
       # :reek:UtilityFunction
       def parse_title(title)
@@ -45,14 +45,14 @@ module Tdiary2jekyll
       end
 
       #
-      # [return] String
+      # @return [String]
       #
       def converted
         Parser::WikiFormat.convert(body)
       end
 
       #
-      # [return] String
+      # @return [String]
       #
       def ext
         'md'

@@ -3,7 +3,7 @@ require 'fileutils'
 module Tdiary2jekyll
   class Writer
     #
-    # [param] String dest
+    # @param dest [String]
     #
     def initialize(dest)
       @out_dir = dest
@@ -11,9 +11,10 @@ module Tdiary2jekyll
     attr_reader :out_dir
 
     #
-    # [param]  Section section
-    # [return] String
+    # @param section [Section]
+    # @return [String]
     #
+    # :reek:FeatureEnvy
     def dest(section)
       date = section.frontmatter['date']
 
@@ -21,8 +22,9 @@ module Tdiary2jekyll
     end
 
     #
-    # [param] Section section
+    # @param section [Section]
     #
+    # :reek:TooManyStatements, :reek:UncommunicativeVariable
     def write(section)
       path = dest(section)
 

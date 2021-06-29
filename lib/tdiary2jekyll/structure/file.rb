@@ -6,7 +6,7 @@ module Tdiary2jekyll
       DATE_RE = /\A([0-9]{4})([0-9]{2})\z/
 
       #
-      # [param] String path
+      # @param path [String]
       #
       def initialize(path)
         @path  = path
@@ -16,14 +16,14 @@ module Tdiary2jekyll
       attr_reader :path
 
       #
-      # [return] String
+      # @return [String]
       #
       def basename
         ::File.basename(path, '.td2')
       end
 
       #
-      # [return] String
+      # @return [String]
       #
       def year
         if ( !@year )
@@ -34,7 +34,7 @@ module Tdiary2jekyll
       end
 
       #
-      # [return] String
+      # @return [String]
       #
       def month
         if ( !@month )
@@ -45,7 +45,7 @@ module Tdiary2jekyll
       end
 
       #
-      # [return] Array
+      # @return [Array]
       #
       def entries
         raw_data = NKF.nkf('-w', ::File.read(path, encoding: 'ascii-8bit'))

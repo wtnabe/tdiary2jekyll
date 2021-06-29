@@ -7,7 +7,7 @@ module Tdiary2jekyll
       class CannotParseDate  < StandardError; end
 
       #
-      # [param] String raw
+      # @param raw [String]
       #
       def initialize(raw)
         @raw      = raw
@@ -24,7 +24,7 @@ module Tdiary2jekyll
       end
 
       #
-      # [return] String
+      # @return [String]
       #
       def inspected_body
         if body.size > 200
@@ -46,17 +46,19 @@ module Tdiary2jekyll
       end
 
       #
-      # [param]  String body
-      # [return] String
+      # @param body [String]
+      # @return [String]
       #
+      # :reek:UtilityFunction
       def chop_terminator(body)
         body.sub(/\n\.\n\z/m, '')
       end
 
       #
-      # [param]  String
-      # [return] Hash
+      # @param metadata [String]
+      # @return [Hash|Date]
       #
+      # :reek:DuplicateMethodCall
       def parse_metadata(metadata)
         @metadata = Hash[*metadata.lines.map(&:chomp).map {|line| line.split(/: /, -1)}.flatten]
 
@@ -64,7 +66,8 @@ module Tdiary2jekyll
       end
 
       #
-      # [param] String date
+      # @param date [String]
+      # @return [Date]
       #
       def parse_date(date)
         if date =~ /\A([0-9]{4})([0-9]{2})([0-9]{2})\z/

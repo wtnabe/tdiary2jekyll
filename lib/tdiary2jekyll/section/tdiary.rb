@@ -4,6 +4,7 @@ module Tdiary2jekyll
   module Section
     class Tdiary < Base
       #
+      # @param title [String]
       # @param body_lines [String]
       #
       def reprepend_title(title, body_lines)

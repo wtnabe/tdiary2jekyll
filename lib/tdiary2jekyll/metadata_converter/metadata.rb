@@ -3,7 +3,7 @@ module Tdiary2jekyll
     class Metadata
       #
       # @param entry [Structure::Entry]
-      # @return [Metadata]
+      # @return [Structure::Metadata]
       #
       # :reek:NestedIterator
       def self.convert(entry)

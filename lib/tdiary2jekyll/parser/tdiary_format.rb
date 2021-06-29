@@ -4,8 +4,8 @@ module Tdiary2jekyll
   module Parser
     class TdiaryFormat < Base
       #
-      # [param]  String entry
-      # [return] Array of TDiarySection
+      # @param entry [String]
+      # @return [Array] [Section::Tdiary]
       #
       def self.split_to_sections(entry)
         generate_section(entry.split(/\n\n/), Section::Tdiary)

@@ -10,8 +10,8 @@ module Tdiary2jekyll
       class AsinParseError < StandardError; end
 
       #
-      # [param]  String entry
-      # [return] Array of WikiSection
+      # @param entry_body [String]
+      # @return [Array] [Section::Wiki]
       #
       def self.split_to_sections(entry_body)
         wedged = entry_body.gsub(/^\![^!]/m, "\v!")

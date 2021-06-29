@@ -1,8 +1,8 @@
 module Tdiary2jekyll
   class App
     #
-    # [param] String src
-    # [param] String dest
+    # @param src [String]
+    # @param dest [String]
     #
     # :reek:TooManyStatementd, :reek:NestedIterators
     def self.run(src, dest)
@@ -21,8 +21,9 @@ module Tdiary2jekyll
     end
 
     #
-    # [param]  TD2Entry entry
-    # [return] Constant
+    # @param entry [Structure::Entry]
+    # @return [Constant]
+    # @see Structure::Entry
     #
     def self.parser(entry)
       Parser.const_get(entry.metadata['Format'].capitalize + 'Format')

@@ -5,9 +5,9 @@ module Tdiary2jekyll
   module Section
     class Base
       #
-      # [param] String   content
-      # [param] Integer  number
-      # [param] Metadata metadata
+      # @param content [String]
+      # @param number [Integer]
+      # @param metadata [Structure::Metadata]
       #
       def initialize(content = nil, number = nil, metadata = nil)
         @number      = number
@@ -27,7 +27,7 @@ module Tdiary2jekyll
       #
       # but title is ignored ( overwritten by content title )
       #
-      # [param] Metadata metadata
+      # @param metadata [Structure::Metadata]
       #
       def metadata=(metadata)
         frontmatter = metadata.frontmatter
@@ -39,7 +39,7 @@ module Tdiary2jekyll
       end
 
       #
-      # [param] String content
+      # @param content [String]
       #
       def split!(content)
         lines = content.lines
@@ -58,8 +58,8 @@ module Tdiary2jekyll
       end
 
       #
-      # [param]  String title
-      # [return] String
+      # @param title [String]
+      # @return [Array]
       #
       # :reek:UtilityFunction
       def parse_title(title)
@@ -90,8 +90,8 @@ module Tdiary2jekyll
       end
 
       #
-      # [param]  title
-      # [return] String
+      # @param title [String]
+      # @return [String]
       #
       # :reek:TooManyStatemanet
       def split_and_store_title_and_categories!(title)

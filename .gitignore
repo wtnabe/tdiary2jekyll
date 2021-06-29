@@ -1,10 +1,12 @@
+.DS_Store
+
 *~
 *.bak
-
-Gemfile.lock
 
 /.bundle
 /vendor
 /src/*
 /dest/*
 /out/*
+/doc/*
+/.yardoc/*

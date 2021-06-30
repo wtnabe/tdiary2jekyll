@@ -9,7 +9,7 @@ module Tdiary2jekyll
       # :reek:BooleanParameter, :reek:UnusedParameters
       def self.convert(str, available = true)
         str.gsub(/<span[\s]+class="plugin">\\\{\\\{\\'(.+?(?!}}).+?)\\'}}<\/span>/m) do
-          CGI.unescapeHTML($1).gsub(/\\"/, '"')
+          CGI.unescapeHTML($1).gsub(/\\"/, '"').gsub(/\n/, ' ')
         end
       end
     end

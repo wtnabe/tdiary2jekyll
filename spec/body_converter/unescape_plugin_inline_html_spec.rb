@@ -12,12 +12,7 @@ EOD
 
   describe 'inline html' do
     it {
-      unescaped = <<EOD
-<a
- href="https://www.amazon.co.jp/dp/4798144649">グラス片手にデータベース設 計
- 販売管理システム編 第2版 (DB Magazine Selection) \\| 梅田 弘之 \\|本 \\| 通販 \\|
- Amazon</a>
-EOD
+      unescaped = '<a  href="https://www.amazon.co.jp/dp/4798144649">グラス片手にデータベース設 計  販売管理システム編 第2版 (DB Magazine Selection) \\| 梅田 弘之 \\|本 \\| 通販 \\|  Amazon</a>' + "\n"
       assert {
         Tdiary2jekyll::BodyConverter::UnescapePluginInlineHtml.convert(inline_html) == unescaped
       }

@@ -55,7 +55,7 @@ module Tdiary2jekyll
       # :reek:DuplicateMethodCall, :reek:TooManyStatements
       def self.unescape_plugins(kramdown)
         BodyConverter.constants.select {|constant|
-          constant.to_s =~ /\AUnescapePlugin(.+)\z/
+          constant.to_s =~ /UnescapePlugin(.*)\z/
         }.inject(kramdown) {|new_kramdown, constant|
           BodyConverter.const_get(constant).convert(new_kramdown)
         }

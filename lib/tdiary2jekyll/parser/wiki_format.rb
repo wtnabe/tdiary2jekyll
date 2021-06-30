@@ -31,6 +31,7 @@ module Tdiary2jekyll
         body = HikiDoc.to_html(body, { use_wiki_name: false })
         body = Kramdown::Document.new(body, input: 'html').to_kramdown
         body = unescape_plugins(body)
+        body = BodyConverter::InternalLink.convert(body)
 
         body
       end

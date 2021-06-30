@@ -15,7 +15,7 @@ describe Tdiary2jekyll::Writer do
 
     describe '#dest' do
       it {
-        assert { writer.dest(section) == File.dirname(__FILE__) + '/out/2002/12/29/01.md' }
+        assert { writer.dest(section) == File.dirname(__FILE__) + '/out/2002/1229/01.md' }
       }
     end
   end
@@ -30,7 +30,7 @@ describe Tdiary2jekyll::Writer do
 
     describe '#dest' do
       it {
-        assert { writer.dest(section) == File.dirname(__FILE__) + '/out/2004/06/22/01.html' }
+        assert { writer.dest(section) == File.dirname(__FILE__) + '/out/2004/0622/01.html' }
       }
     end
   end

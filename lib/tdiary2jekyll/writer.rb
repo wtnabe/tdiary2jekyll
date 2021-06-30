@@ -18,7 +18,9 @@ module Tdiary2jekyll
     def dest(section)
       date = section.frontmatter['date']
 
-      File.join(@out_dir, sprintf("%04d/%02d/%02d/%02d.#{section.ext}", date.year, date.month, date.day, section.number))
+      File.join(
+        @out_dir,
+        Util.path(date: date, section_number: section.number, section_ext: section.ext))
     end
 
     #

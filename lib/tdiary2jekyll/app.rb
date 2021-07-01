@@ -12,8 +12,7 @@ module Tdiary2jekyll
         Structure::File.new(file).entries.each {|entry|
           entry    = Structure::Entry.new(entry)
           metadata = MetadataConverter::Metadata.convert(entry)
-          parser(entry).split_to_sections(entry.body).each {|section|
-            section.metadata = metadata
+          parser(entry).split_to_sections(entry.body, metadata).each {|section|
             writer.write(section)
           }
         }

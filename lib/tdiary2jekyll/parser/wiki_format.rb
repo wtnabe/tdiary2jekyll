@@ -11,13 +11,17 @@ module Tdiary2jekyll
 
       #
       # @param entry_body [String]
+      # @param metadata [Structure::Metadata]
       # @return [Array] [Section::Wiki]
       #
-      def self.split_to_sections(entry_body)
+      def self.split_to_sections(entry_body, metadata = nil)
+        @metadata = metadata
         wedged = entry_body.gsub(/^\![^!]/m, "\v!")
         generate_section(
           wedged.split(/\v/m).select {|section| section.chomp.size > 0},
-          Section::Wiki)
+          Section::Wiki,
+          metadata
+        )
       end
 
       #
@@ -26,7 +30,8 @@ module Tdiary2jekyll
       #
       # :reek:TooManyStatements
       def self.convert(section_body)
-        body = escape_liquid_tag(section_body)
+        body = BodyConverter::ImageTag.convert(section_body, @metadata)
+        body = escape_liquid_tag(body)
         body = convert_plugins(body)
         body = HikiDoc.to_html(body, { use_wiki_name: false })
         body = Kramdown::Document.new(body, input: 'html').to_kramdown

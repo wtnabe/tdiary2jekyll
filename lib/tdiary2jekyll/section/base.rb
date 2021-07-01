@@ -16,6 +16,7 @@ module Tdiary2jekyll
         @title       = nil
         @body        = nil
         @categories  = []
+        @metadata    = metadata
 
         split!(content) if content
         self.metadata = metadata if metadata

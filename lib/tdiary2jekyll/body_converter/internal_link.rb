@@ -14,10 +14,6 @@ module Tdiary2jekyll
                       1
                     end
 
-          if year.to_i > 3000
-            p body
-          end
-          
           Tdiary2jekyll::Util.path(
             date: Date.new(*([year, month, day].map {|e| e.to_i})),
             section_number: section)

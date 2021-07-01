@@ -15,7 +15,7 @@ module Tdiary2jekyll
              case $2
              when 'fn'
                # convert plugins で処理してしまうと [] が escape されてしまうのでこちらで
-               notes << $3
+               notes << $3.gsub(/\n/, ' ')
                "[^#{notes.size}]"
              else
                CGI.unescapeHTML($1).gsub(/\\/, '').gsub(/{{/, '{% ').gsub(/}}/, ' %}')

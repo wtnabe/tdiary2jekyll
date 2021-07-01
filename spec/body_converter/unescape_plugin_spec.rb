@@ -6,7 +6,7 @@ describe Tdiary2jekyll::BodyConverter::UnescapePlugin do
   describe 'footnote' do
     it {
       assert {
-        Tdiary2jekyll::BodyConverter::UnescapePlugin.convert(footnote, true) == "{% fn 'この1年半ほどでようやく NewRelicの恩恵に与かりまくっている。' %}"
+        Tdiary2jekyll::BodyConverter::UnescapePlugin.convert(footnote, true) == "[^1]\n\n[^1]: この1年半ほどでようやく NewRelicの恩恵に与かりまくっている。\n"
       }
     }
   end

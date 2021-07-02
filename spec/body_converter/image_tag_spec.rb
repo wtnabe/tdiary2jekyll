@@ -27,6 +27,14 @@ describe Tdiary2jekyll::BodyConverter::ImageTag do
     }
   end
 
+  it '{{image 0, \'\', nil, ["100%",nil]}}' do
+    tag = "{{image 0, '', nil, [\"100%\",nil]}}"
+
+    assert {
+      Tdiary2jekyll::BodyConverter::ImageTag.convert(tag, metadata) == '{{\'<img alt="" src="/assets/images/diary/20210701_0.jpg">\'}}'
+    }
+  end
+
   it '{{image 0, \'\', nil, nil}}' do
     tag = "{{image 0, '', nil, nil}}"
 

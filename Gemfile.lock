@@ -29,6 +29,7 @@ GEM
     reline (0.2.6)
       io-console (~> 0.5)
     rexml (3.2.5)
+    rr (3.0.5)
     ruby-progressbar (1.11.0)
     yard (0.9.26)
 
@@ -45,6 +46,7 @@ DEPENDENCIES
   minitest-reporters
   nokogiri
   rake
+  rr
   yard
 
 BUNDLED WITH

@@ -17,3 +17,7 @@ group :development do
   gem 'minitest-power_assert'
   gem 'minitest-reporters'
 end
+
+group :test do
+  gem 'rr', require: false
+end

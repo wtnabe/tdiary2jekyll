@@ -8,7 +8,7 @@ module Tdiary2jekyll
       #
       # :reek:TooManyStatements, :reek:BooleanParameter
       def self.convert(body, metadata)
-        body.gsub(/\{\{(?:image\(?(?:_(left|right))?) ('?[0-9]+'?), '([^\']*)', nil(?:, (?:nil|(?:\[((?:[0-9,"%]+|nil),(?:[0-9,"%]+|nil))\])))?(?: \))?\}\}/m) do
+        body.gsub(/\{\{(?:image\(?(?:_(left|right))?) ('?[0-9]+'?),[\s]'([^\']*)',[\s]nil(?:,[\s](?:nil|(?:\[((?:[0-9,"%]+|nil),(?:[0-9,"%]+|nil))\])))?(?: \))?\}\}/m) do
           align = $1 if $1
           number = $2.tr('\'', '')
           alt = $3

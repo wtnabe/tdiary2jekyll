@@ -6,11 +6,11 @@ module Tdiary2jekyll
       # @param available [Boolish]
       # @return [String]
       #
-      # :reek:BooleanParameter, :reek:ControlParameter
+      # :reek:BooleanParameter, :reek:ControlParameter, :reek:DuplicateMethodCall
       def self.convert(body, available = true)
          notes = []
 
-         new_body = body.gsub(/<(?:span|div)[\s]+class="plugin">[\s]?(\\{\\{([[:alnum:]]+)[\s]+\\'(.+?)\\'}})[\s]?<\/(?:span|div)>/m) do
+         unescape_deep = lambda {
            if available
              case $2
              when 'fn'
@@ -23,6 +23,14 @@ module Tdiary2jekyll
            else
              ''
            end
+         }
+
+         new_body = body.gsub(/<(?:span|div)[\s]+class="plugin">[\s]?(\\{\\{([[:alnum:]]+)[\s]+\\'(.+?)\\'}})[\s]?<\/(?:span|div)>/m) do
+           unescape_deep.call
+         end
+         # class="plugin" に囲まれていない場合がある
+         new_body = new_body.gsub(/({{([[:alnum:]]+)[\s]+'(.+?)'}})/m) do
+           unescape_deep.call
          end
 
          if notes.size > 0

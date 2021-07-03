@@ -10,7 +10,7 @@ module Tdiary2jekyll
       def self.convert(body, available = true)
          notes = []
 
-         new_body = body.gsub(/<span[\s]+class="plugin">(\\{\\{([[:alnum:]]+)[\s]+\\'(.+?)\\'}})<\/span>/m) do
+         new_body = body.gsub(/<(?:span|div)[\s]+class="plugin">[\s]?(\\{\\{([[:alnum:]]+)[\s]+\\'(.+?)\\'}})[\s]?<\/(?:span|div)>/m) do
            if available
              case $2
              when 'fn'

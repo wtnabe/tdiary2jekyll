@@ -13,6 +13,7 @@ module Tdiary2jekyll
           entry    = Structure::Entry.new(entry)
           metadata = MetadataConverter::Metadata.convert(entry)
           parser(entry).split_to_sections(entry.body, metadata).each {|section|
+            section.metadata = metadata
             writer.write(section)
           }
         }

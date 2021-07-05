@@ -36,15 +36,6 @@ module Tdiary2jekyll
       end
 
       #
-      # @param title [String]
-      # @param body_lines [String]
-      #
-      # :reek:UtilityFunction
-      def reprepend_title(title, body_lines)
-        ["!#{title}", body_lines].join("\n")
-      end
-
-      #
       # @return [String]
       #
       def converted

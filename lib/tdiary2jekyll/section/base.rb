@@ -47,7 +47,7 @@ module Tdiary2jekyll
 
         title = prepare_first_line(lines.first)
         parsed_title = split_and_store_title_and_categories!(title)
-        @body = reprepend_title(parsed_title, lines[1..-1].join.lstrip)
+        @body = lines[1..-1].join.lstrip
       end
 
       #
@@ -102,14 +102,6 @@ module Tdiary2jekyll
         @title = strip_markup_from_title(parsed_title)
 
         parsed_title
-      end
-
-      #
-      # @param title [String]
-      # @param body_lines [String]
-      #
-      def reprepend_title(title, body_lines)
-        [title, body_lines].join("\n")
       end
     end
   end

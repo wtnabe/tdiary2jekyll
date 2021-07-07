@@ -13,6 +13,13 @@ task :convert do
   Tdiary2jekyll::App.run(File.dirname(__FILE__) + '/src', File.dirname(__FILE__) + '/dest')
 end
 
+desc 'clean'
+task :clean do
+  require 'fileutils'
+
+  FileUtils::Verbose.rm_r(File.dirname(__FILE__) + '/dest')
+end
+
 desc 'yard'
 task :yard do
   sh 'yard doc lib'

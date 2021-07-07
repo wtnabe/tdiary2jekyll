@@ -9,7 +9,7 @@ module Tdiary2jekyll
       #
       # :reek:ControlParameter
       def path(date:, section_number:, section_ext: nil)
-        path = sprintf("%04d/%02d%02d/%02d", date.year, date.month, date.day, section_number)
+        path = sprintf("%04d-%02d-%02d-%02d", date.year, date.month, date.day, section_number)
 
         if section_ext
           "#{path}.#{section_ext}"

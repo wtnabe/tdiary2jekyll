@@ -15,13 +15,13 @@ module Tdiary2jekyll
         @frontmatter = nil
         @title       = nil
         @body        = nil
-        @categories  = []
+        @tags        = []
         @metadata    = metadata
 
         split!(content) if content
         self.metadata = metadata if metadata
       end
-      attr_reader :number, :title, :body, :categories, :frontmatter, :format
+      attr_reader :number, :title, :body, :tags, :frontmatter, :format
 
       #
       # insert Entry Metadata
@@ -33,7 +33,7 @@ module Tdiary2jekyll
       def metadata=(metadata)
         frontmatter = metadata.frontmatter
         frontmatter.merge!('title' => title) if !title.nil?
-        frontmatter.merge!('categories' => categories)
+        frontmatter.merge!('tags' => tags)
 
         @frontmatter = frontmatter
         @format      = metadata.format
@@ -98,7 +98,7 @@ module Tdiary2jekyll
       def split_and_store_title_and_categories!(title)
         categories, parsed_title = parse_title(title)
 
-        @categories = categories_to_a(categories)
+        @tags = categories_to_a(categories)
         @title = strip_markup_from_title(parsed_title)
 
         parsed_title

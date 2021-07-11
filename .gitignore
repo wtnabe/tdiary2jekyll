@@ -2,11 +2,14 @@
 
 *~
 *.bak
+.env
 
 /.bundle
 /vendor
 /src/*
+!/src/.keep
 /dest/*
+!/dest/.keep
 /out/*
 /doc/*
 /.yardoc/*
